@@ -35,7 +35,7 @@
         <item name="spinBars">true</item>
 
         <!--The drawing color for the bars-->
-        <item name="color">@color/accent</item>
+        <item name="color">@android:color/white</item>
     </style>
 
 </resources>
