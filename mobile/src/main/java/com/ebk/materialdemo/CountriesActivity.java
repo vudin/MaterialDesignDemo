@@ -4,22 +4,23 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
 
-public class DemoActivity extends ActionBarActivity {
+public class CountriesActivity extends BaseNavigationDrawerActivity {
 
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -28,18 +29,18 @@ public class DemoActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_demo);
+        setSelectedDrawerItemPosition(0);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
-        swipeRefreshLayout.setProgressBackgroundColor(android.R.color.darker_gray);
+        swipeRefreshLayout.setProgressBackgroundColor(R.color.gray_with_transparency);
         swipeRefreshLayout.setSize(SwipeRefreshLayout.LARGE);
         swipeRefreshLayout.setColorSchemeResources(
                 android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_purple);
-        swipeRefreshLayout.setOnRefreshListener(new RefreshListener());
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshListener());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
@@ -47,8 +48,20 @@ public class DemoActivity extends ActionBarActivity {
         populateList();
     }
 
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_countries;
+    }
+
+    @Override
+    protected int getActivityTitleResId() {
+        return R.string.title_activity_countries;
+    }
+
     private void populateList() {
-        recyclerView.setAdapter(new RecyclerAdapter(getSortedCountryList()));
+        RecyclerAdapter adapter = new RecyclerAdapter(getSortedCountryList());
+        adapter.setOnItemClickListener(new RecyclerViewOnItemClickListener());
+        recyclerView.setAdapter(adapter);
     }
 
     private ArrayList<String> getSortedCountryList() {
@@ -77,17 +90,36 @@ public class DemoActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+
         if (id == R.id.action_settings) {
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
+    private class SwipeRefreshListener implements SwipeRefreshLayout.OnRefreshListener {
+        @Override
+        public void onRefresh() {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    populateList();
+                    swipeRefreshLayout.setRefreshing(false);
+                }
+            }, 5000); //adding five sec delay
+        }
+    }
+
     private static class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
         private ArrayList<String> dataset;
+        public OnItemClickListener itemClickListener;
 
         public RecyclerAdapter(ArrayList<String> myDataset) {
             dataset = myDataset;
+        }
+
+        public void setOnItemClickListener(final OnItemClickListener itemClickListener) {
+            this.itemClickListener = itemClickListener;
         }
 
         @Override
@@ -109,26 +141,46 @@ public class DemoActivity extends ActionBarActivity {
             return dataset.size();
         }
 
-        public static class ViewHolder extends RecyclerView.ViewHolder {
+        public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+            public CardView cardView;
             public TextView textView;
 
             public ViewHolder(CardView v) {
                 super(v);
+                cardView = (CardView) v.findViewById(R.id.card_view);
                 textView = (TextView) v.findViewById(R.id.text_view);
+                cardView.setOnClickListener(this);
+                textView.setOnClickListener(this);
+            }
+
+            @Override
+            public void onClick(View v) {
+                if (itemClickListener == null) {
+                    Log.e("MATERIAL_DEMO", "You should first set an OnItemClickListener to this adapter.");
+                    return;
+                }
+                if (v.getId() == R.id.card_view) {
+                    itemClickListener.onItemClick(v, getPosition());
+                } else if (v.getId() == R.id.text_view) {
+                    itemClickListener.onItemClick(v, getPosition());
+                }
+            }
+        }
+
+        public interface OnItemClickListener {
+            void onItemClick(View view, int position);
+        }
+    }
+
+    private class RecyclerViewOnItemClickListener implements RecyclerAdapter.OnItemClickListener {
+        @Override
+        public void onItemClick(View view, int position) {
+            if (view.getId() == R.id.card_view) {
+                Toast.makeText(CountriesActivity.this, "Card " + position + " Clicked", Toast.LENGTH_SHORT).show();
+            } else if (view.getId() == R.id.text_view) {
+                Toast.makeText(CountriesActivity.this, "Text " + position + " Clicked", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
-    private class RefreshListener implements SwipeRefreshLayout.OnRefreshListener {
-        @Override
-        public void onRefresh() {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    populateList();
-                    swipeRefreshLayout.setRefreshing(false);
-                }
-            }, 5000); //adding five sec delay
-        }
-    }
 }

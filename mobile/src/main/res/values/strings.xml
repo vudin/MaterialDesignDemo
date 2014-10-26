@@ -1,8 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">MaterialDemo</string>
+    <string name="app_name">Material Demo</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_countries">Countries</string>
+    <string name="title_activity_planets">Planets</string>
     <string name="action_settings">Settings</string>
+
+    <string name="drawer_open">Drawer Open</string>
+    <string name="drawer_close">Drawer Close</string>
+
+    <string-array name="navigation_items">
+        <item>Countries</item>
+        <item>Planets</item>
+        <item>States</item>
+    </string-array>
+
+    <string-array name="planet_names">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+        <item>Pluto</item>
+    </string-array>
+
+    <string-array name="state_names">
+        <item>Baden-Württemberg</item>
+        <item>Bavaria</item>
+        <item>Berlin</item>
+        <item>Brandenburg</item>
+        <item>Bremen</item>
+        <item>Hamburg</item>
+        <item>Hesse</item>
+        <item>Lower Saxony</item>
+        <item>Mecklenburg-Western Pomerania</item>
+        <item>North Rhine-Westphalia</item>
+        <item>Rhineland-Palatinate</item>
+        <item>Saxony-Anhalt</item>
+        <item>Saarland</item>
+        <item>Saxony</item>
+        <item>Schleswig-Holstein</item>
+        <item>Thuringia</item>
+    </string-array>
 
 </resources>
