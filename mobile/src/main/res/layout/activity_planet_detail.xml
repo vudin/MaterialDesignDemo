@@ -1,0 +1,31 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.ebk.materialdemo.PlanetDetailActivity">
+
+    <ImageView
+        android:id="@+id/planet_image"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:transitionName="photo_hero"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerInside"
+        android:contentDescription="@string/planet_image" />
+
+    <TextView
+        android:id="@+id/planet_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:background="@color/light_blue"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:textColor="@android:color/black"
+        android:layout_below="@+id/planet_image" />
+
+</RelativeLayout>

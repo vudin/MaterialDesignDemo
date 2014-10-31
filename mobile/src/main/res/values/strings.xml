@@ -6,9 +6,11 @@
     <string name="title_activity_countries">Countries</string>
     <string name="title_activity_planets">Planets</string>
     <string name="action_settings">Settings</string>
-
     <string name="drawer_open">Drawer Open</string>
     <string name="drawer_close">Drawer Close</string>
+    <string name="transition_album_cover">transition_album_cover</string>
+    <string name="title_activity_planet_detail">Planet Detail</string>
+    <string name="planet_image">Planet image</string>
 
     <string-array name="navigation_items">
         <item>Countries</item>
@@ -46,5 +48,4 @@
         <item>Schleswig-Holstein</item>
         <item>Thuringia</item>
     </string-array>
-
 </resources>
