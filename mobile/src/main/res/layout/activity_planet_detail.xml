@@ -12,7 +12,7 @@
         android:id="@+id/planet_image"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:transitionName="photo_hero"
+        android:transitionName="photo"
         android:layout_alignParentTop="true"
         android:scaleType="centerInside"
         android:contentDescription="@string/planet_image" />
