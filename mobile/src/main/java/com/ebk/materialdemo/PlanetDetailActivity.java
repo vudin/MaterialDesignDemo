@@ -21,17 +21,22 @@ public class PlanetDetailActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_planet_detail);
+
+        String planetName = getIntent().getStringExtra(PlanetsActivity.EXTRA_NAME);
+        int planetImageResId = getIntent().getIntExtra(PlanetsActivity.EXTRA_IMAGE, R.drawable.earth);
+
+        getSupportActionBar().setTitle(planetName);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ImageView image = (ImageView) findViewById(R.id.planet_image);
         ViewCompat.setTransitionName(image, PlanetsActivity.EXTRA_IMAGE);
-        Picasso.with(this).load(getIntent().getIntExtra(PlanetsActivity.EXTRA_IMAGE, R.drawable.earth)).into(image);
+        Picasso.with(this).load(planetImageResId).into(image);
 
         name = (TextView) findViewById(R.id.planet_name);
         ViewCompat.setTransitionName(name, PlanetsActivity.EXTRA_NAME);
-        name.setText(getIntent().getStringExtra(PlanetsActivity.EXTRA_NAME));
+        name.setText(planetName);
 
-        Palette.generateAsync(BitmapFactory.decodeResource(getResources(), getIntent().getIntExtra(PlanetsActivity.EXTRA_IMAGE, R.drawable.earth)), new Palette.PaletteAsyncListener() {
+        Palette.generateAsync(BitmapFactory.decodeResource(getResources(), planetImageResId), new Palette.PaletteAsyncListener() {
             @Override
             public void onGenerated(Palette palette) {
                 name.setBackgroundColor(palette.getLightVibrantColor(R.color.light_blue));
