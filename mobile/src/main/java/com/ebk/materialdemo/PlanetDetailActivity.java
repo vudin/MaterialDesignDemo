@@ -1,11 +1,12 @@
 package com.ebk.materialdemo;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.graphics.Palette;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,6 +14,8 @@ import com.squareup.picasso.Picasso;
 
 
 public class PlanetDetailActivity extends ActionBarActivity {
+
+    private TextView name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +27,16 @@ public class PlanetDetailActivity extends ActionBarActivity {
         ViewCompat.setTransitionName(image, PlanetsActivity.EXTRA_IMAGE);
         Picasso.with(this).load(getIntent().getIntExtra(PlanetsActivity.EXTRA_IMAGE, R.drawable.earth)).into(image);
 
-        TextView name = (TextView) findViewById(R.id.planet_name);
+        name = (TextView) findViewById(R.id.planet_name);
         ViewCompat.setTransitionName(name, PlanetsActivity.EXTRA_NAME);
         name.setText(getIntent().getStringExtra(PlanetsActivity.EXTRA_NAME));
+
+        Palette.generateAsync(BitmapFactory.decodeResource(getResources(), getIntent().getIntExtra(PlanetsActivity.EXTRA_IMAGE, R.drawable.earth)), new Palette.PaletteAsyncListener() {
+            @Override
+            public void onGenerated(Palette palette) {
+                name.setBackgroundColor(palette.getLightVibrantColor(R.color.light_blue));
+            }
+        });
     }
 
 
