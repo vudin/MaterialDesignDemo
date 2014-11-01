@@ -135,6 +135,7 @@ public class PlanetsActivity extends BaseNavigationDrawerActivity {
     }
 
     private class GridItemClickListener implements AdapterView.OnItemClickListener {
+        @SuppressWarnings("unchecked")
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             // Define transition options
