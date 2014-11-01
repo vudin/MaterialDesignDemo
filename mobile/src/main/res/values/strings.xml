@@ -9,7 +9,7 @@
     <string name="drawer_open">Drawer Open</string>
     <string name="drawer_close">Drawer Close</string>
     <string name="transition_album_cover">transition_album_cover</string>
-    <string name="title_activity_planet_detail">Planet Detail</string>
+    <string name="title_activity_planet_detail">Planet Info</string>
     <string name="planet_image">Planet image</string>
     <string name="title_overlapping_motion">Planets</string>
 
@@ -49,5 +49,10 @@
     </string-array>
 
     <string name="title_activity_overlapping_animation">OverlappingAnimationActivity</string>
-
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, ex dicta legere suscipiantur vix. Vim rebum nihil feugiat te, pro elitr assentior at, viderer antiopam cu est. Has cu philosophia consectetuer, mei id utamur patrioque. Nisl aliquip ex sit, hinc salutandi mei an. Has epicuri evertitur ei, ne cum eros deleniti ullamcorper, inermis convenire pertinacia in pri.
+Sit te porro ancillae, ius ut dolor percipit, ea alienum expetenda vix. Nam an lorem apeirian. Eu duo odio libris. Vis at dolor quodsi eirmod, vix justo fugit soluta no, vel latine percipit facilisi ea. Ne vel velit putant, affert accumsan ea per. Ex copiosae sensibus tincidunt sit, at aeque tantas denique pro.
+Qui accusata contentiones ne, eu sit sint luptatum dissentiet. Impedit nominavi reformidans vim ex. Illud noster sit in, pro augue omnesque ex. Eos erroribus appellantur ne. Eu odio ludus senserit nec.
+In sea vidit malorum prompta, his errem possit ut, vim in zril repudiare. No eripuit volumus luptatum vis, cum graeco voluptatum eu, ex vim sale laboramus conclusionemque. Te stet delicata ius. Sed alienum appetere mediocritatem at, mei fabulas efficiantur an.
+Eam labore scripta senserit ne. Sea altera prodesset eu, quis causae mandamus eos in, id atqui pericula pertinacia mel. Id sed atqui nullam, nulla volumus ex eum. Delicata gloriatur id vim, nam quis appetere at. Vix solum gloriatur voluptaria an, alii discere dissentias sea cu. Sea labores mandamus eu.</string>
+    
 </resources>

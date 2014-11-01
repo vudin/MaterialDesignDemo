@@ -111,7 +111,7 @@ public abstract class BaseNavigationDrawerActivity extends ActionBarActivity {
                     startActivity(new Intent(this, PlanetsActivity.class));
                     break;
                 case 2:
-                    selectedDrawerItemPosition = 1;
+                    selectedDrawerItemPosition = 2;
                     startActivity(new Intent(this, OverlappingMotionActivity.class));
                     break;
                 default:
