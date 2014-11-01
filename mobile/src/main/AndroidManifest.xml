@@ -25,8 +25,12 @@
         </activity>
         <activity
             android:name=".PlanetDetailActivity"
-            android:theme="@style/AppTheme"
-            android:label="@string/title_activity_planet_detail" >
+            android:label="@string/title_activity_planet_detail"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name=".OverlappingMotionActivity"
+            android:label="@string/title_activity_overlapping_animation" >
         </activity>
     </application>
 

@@ -11,13 +11,13 @@
     <string name="transition_album_cover">transition_album_cover</string>
     <string name="title_activity_planet_detail">Planet Detail</string>
     <string name="planet_image">Planet image</string>
+    <string name="title_overlapping_motion">Planets</string>
 
     <string-array name="navigation_items">
         <item>Countries</item>
         <item>Planets</item>
-        <item>States</item>
+        <item>Overlapping Motion</item>
     </string-array>
-
     <string-array name="planet_names">
         <item>Mercury</item>
         <item>Venus</item>
@@ -29,7 +29,6 @@
         <item>Neptune</item>
         <item>Pluto</item>
     </string-array>
-
     <string-array name="state_names">
         <item>Baden-Württemberg</item>
         <item>Bavaria</item>
@@ -48,4 +47,7 @@
         <item>Schleswig-Holstein</item>
         <item>Thuringia</item>
     </string-array>
+
+    <string name="title_activity_overlapping_animation">OverlappingAnimationActivity</string>
+
 </resources>
