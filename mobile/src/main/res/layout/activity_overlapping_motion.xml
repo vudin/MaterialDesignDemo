@@ -5,36 +5,19 @@
     android:layout_height="match_parent"
     tools:context="com.ebk.materialdemo.OverlappingMotionActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
+    <GridView
+        android:id="@+id/numbers_grid"
+        android:layout_width="fill_parent"
+        android:numColumns="auto_fit"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingBottom="@dimen/activity_vertical_margin">
-
-        <View
-            android:id="@+id/sample_view"
-            android:layout_width="50dip"
-            android:layout_height="50dip"
-            android:background="@color/primary" />
-
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Expand"
-            android:onClick="expand" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Collapse"
-            android:onClick="collapse" />
-
-
-    </LinearLayout>
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:columnWidth="@dimen/number_item_width"
+        android:horizontalSpacing="4dp"
+        android:verticalSpacing="4dp"
+        android:stretchMode="columnWidth"
+        android:layout_height="match_parent" />
     <!-- The navigation drawer -->
     <ListView
         android:id="@+id/left_drawer"

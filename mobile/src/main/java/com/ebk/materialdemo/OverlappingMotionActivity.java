@@ -3,9 +3,7 @@ package com.ebk.materialdemo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+import android.widget.GridView;
 
 
 public class OverlappingMotionActivity extends BaseNavigationDrawerActivity {
@@ -24,22 +22,9 @@ public class OverlappingMotionActivity extends BaseNavigationDrawerActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setSelectedDrawerItemPosition(2);
-    }
 
-
-    public void expand(View v) {
-        // previously invisible view
-        View myView = findViewById(R.id.sample_view);
-        Animation a = AnimationUtils.loadAnimation(OverlappingMotionActivity.this, R.anim.scale_up_from_center);
-        myView.setAnimation(a);
-        myView.setVisibility(View.VISIBLE);
-    }
-
-    public void collapse(View v) {
-        View myView = findViewById(R.id.sample_view);
-        Animation a = AnimationUtils.loadAnimation(OverlappingMotionActivity.this, R.anim.scale_down_from_center);
-        myView.setAnimation(a);
-        myView.setVisibility(View.INVISIBLE);
+        GridView gridView = (GridView) findViewById(R.id.numbers_grid);
+        gridView.setAdapter(new ExpandAnimationGridAdapter(this, 12));
     }
 
 
