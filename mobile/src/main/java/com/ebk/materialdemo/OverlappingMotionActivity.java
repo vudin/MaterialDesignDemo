@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.GridView;
 
 
@@ -52,7 +53,8 @@ public class OverlappingMotionActivity extends BaseNavigationDrawerActivity {
     }
 
     public void again(View v) {
-        gridAdapter = new ExpandAnimationGridAdapter(this, 12);
-        gridView.setAdapter(gridAdapter);
+        Button button = (Button) v;
+        gridAdapter.notifyDataSetChanged();
+        button.setText((button.getText().equals(getString(R.string.collapse)) ? R.string.expand : R.string.collapse));
     }
 }

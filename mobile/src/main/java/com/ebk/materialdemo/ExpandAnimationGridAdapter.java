@@ -51,7 +51,15 @@ public class ExpandAnimationGridAdapter extends BaseAdapter {
         }
         holder.numberText.setText(String.valueOf(position + 1));
 
+        if (convertView.getVisibility() != View.VISIBLE) {
+            expandAnimation(position, convertView);
+        } else {
+            collapseAnimation(position, convertView);
+        }
+        return convertView;
+    }
 
+    private void expandAnimation(int position, View convertView) {
         final View finalConvertView = convertView;
         convertView.postDelayed(new Runnable() {
             @Override
@@ -61,9 +69,19 @@ public class ExpandAnimationGridAdapter extends BaseAdapter {
                 finalConvertView.setVisibility(View.VISIBLE);
             }
         }, position * 30);
+    }
 
 
-        return convertView;
+    private void collapseAnimation(int position, View convertView) {
+        final View finalConvertView = convertView;
+        convertView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Animation a = AnimationUtils.loadAnimation(context, R.anim.scale_down_from_center);
+                finalConvertView.setAnimation(a);
+                finalConvertView.setVisibility(View.INVISIBLE);
+            }
+        }, (itemsNumber - position) * 30);
     }
 
     private static class ViewHolder {
