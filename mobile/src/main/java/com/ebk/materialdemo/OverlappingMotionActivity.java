@@ -1,14 +1,11 @@
 package com.ebk.materialdemo;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.SuppressLint;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewAnimationUtils;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 
 public class OverlappingMotionActivity extends BaseNavigationDrawerActivity {
@@ -30,70 +27,20 @@ public class OverlappingMotionActivity extends BaseNavigationDrawerActivity {
     }
 
 
-    public void animateThat(View v) {
+    public void expand(View v) {
         // previously invisible view
         View myView = findViewById(R.id.sample_view);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            if (myView.getVisibility() == View.VISIBLE) {
-                hideViewAnimated(myView);
-            } else {
-                myView.setVisibility(View.VISIBLE);
-                showViewAnimated(myView);
-            }
-        } else {
-            myView.setVisibility(myView.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
-        }
+        Animation a = AnimationUtils.loadAnimation(OverlappingMotionActivity.this, R.anim.scale_up);
+        myView.setAnimation(a);
+        myView.setVisibility(View.VISIBLE);
     }
 
-    @SuppressLint("NewApi")
-    private void showViewAnimated(View myView) {
-
-
-// get the center for the clipping circle
-        int cx = (myView.getLeft() + myView.getRight()) / 2;
-        int cy = (myView.getTop() + myView.getBottom()) / 2;
-
-// get the final radius for the clipping circle
-        int finalRadius = myView.getWidth();
-
-// create and start the animator for this view
-// (the start radius is zero)
-        Animator anim =
-                ViewAnimationUtils.createCircularReveal(myView, cx, cy, 0, finalRadius);
-        anim.start();
+    public void collapse(View v) {
+        View myView = findViewById(R.id.sample_view);
+        Animation a = AnimationUtils.loadAnimation(OverlappingMotionActivity.this, R.anim.scale_down);
+        myView.setAnimation(a);
+        myView.setVisibility(View.INVISIBLE);
     }
-
-    @SuppressLint("NewApi")
-    private void hideViewAnimated(final View myView) {
-
-// get the center for the clipping circle
-        int cx = (myView.getLeft() + myView.getRight()) / 2;
-        int cy = (myView.getTop() + myView.getBottom()) / 2;
-
-// get the initial radius for the clipping circle
-        int initialRadius = myView.getWidth();
-
-// create the animation (the final radius is zero)
-        Animator anim =
-                ViewAnimationUtils.createCircularReveal(myView, cx, cy, initialRadius, 0);
-
-// make the view invisible when the animation is done
-        anim.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd(animation);
-                myView.setVisibility(View.INVISIBLE);
-            }
-        });
-
-// start the animation
-        anim.start();
-    }
-
-    public void forceit(View v) {
-        showViewAnimated(findViewById(R.id.sample_view));
-    }
-
 
 
     @Override
