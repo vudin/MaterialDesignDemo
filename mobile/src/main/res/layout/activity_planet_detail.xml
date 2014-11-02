@@ -16,47 +16,72 @@
         android:fillViewport="true"
         android:background="#fff">
 
-        <RelativeLayout
+        <FrameLayout
+            android:id="@+id/scroll_view_child"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/planet_image"
+            <FrameLayout
+                android:id="@+id/image_container"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:background="@android:color/black"
-                android:transitionName="photo"
-                android:scaleType="centerInside"
-                android:contentDescription="@string/planet_image" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/planet_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_below="@+id/planet_image"
-                android:padding="@dimen/activity_horizontal_margin" />
+                <ImageView
+                    android:id="@+id/planet_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:background="@android:color/black"
+                    android:transitionName="photo"
+                    android:scaleType="centerInside"
+                    android:contentDescription="@string/planet_image" />
+            </FrameLayout>
 
-            <TextView
-                android:id="@+id/planet_detail"
+            <FrameLayout
+                android:id="@+id/detail_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:layout_below="@id/planet_name"
-                android:padding="@dimen/activity_horizontal_margin" />
+                android:background="@android:color/white">
 
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/planet_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:padding="@dimen/activity_horizontal_margin" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/header_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white">
+
+                <TextView
+                    android:id="@+id/planet_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:padding="@dimen/activity_horizontal_margin" />
+            </FrameLayout>
+
+        </FrameLayout>
     </com.ebk.materialdemo.widget.ObservableScrollView>
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+    <FrameLayout
+        android:id="@+id/toolbar_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
-        android:background="@android:color/transparent"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:background="@android:color/transparent"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    </FrameLayout>
 </FrameLayout>
