@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:visibility="invisible"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/primary"
+    android:gravity="center">
+
+    <TextView
+        android:background="@color/primary"
+        android:id="@+id/item_number"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:layout_width="@dimen/number_item_width"
+        android:layout_height="@dimen/number_item_width" />
+</LinearLayout>

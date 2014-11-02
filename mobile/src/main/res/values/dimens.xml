@@ -6,4 +6,6 @@
     <dimen name="planet_item_height">150dp</dimen>
     <dimen name="headerbar_elevation">4dp</dimen>
     <dimen name="planet_detail_max_header_elevation">@dimen/headerbar_elevation</dimen>
+    <dimen name="number_item_width">50dp</dimen>
+    <dimen name="number_item_height">50dp</dimen>
 </resources>
