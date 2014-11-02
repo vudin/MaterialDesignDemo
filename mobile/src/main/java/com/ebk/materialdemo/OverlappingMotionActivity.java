@@ -30,14 +30,14 @@ public class OverlappingMotionActivity extends BaseNavigationDrawerActivity {
     public void expand(View v) {
         // previously invisible view
         View myView = findViewById(R.id.sample_view);
-        Animation a = AnimationUtils.loadAnimation(OverlappingMotionActivity.this, R.anim.scale_up);
+        Animation a = AnimationUtils.loadAnimation(OverlappingMotionActivity.this, R.anim.scale_up_from_center);
         myView.setAnimation(a);
         myView.setVisibility(View.VISIBLE);
     }
 
     public void collapse(View v) {
         View myView = findViewById(R.id.sample_view);
-        Animation a = AnimationUtils.loadAnimation(OverlappingMotionActivity.this, R.anim.scale_down);
+        Animation a = AnimationUtils.loadAnimation(OverlappingMotionActivity.this, R.anim.scale_down_from_center);
         myView.setAnimation(a);
         myView.setVisibility(View.INVISIBLE);
     }
