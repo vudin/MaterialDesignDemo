@@ -3,10 +3,14 @@ package com.ebk.materialdemo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.GridView;
 
 
 public class OverlappingMotionActivity extends BaseNavigationDrawerActivity {
+    GridView gridView;
+    ExpandAnimationGridAdapter gridAdapter;
 
     @Override
     protected int getLayoutId() {
@@ -23,8 +27,9 @@ public class OverlappingMotionActivity extends BaseNavigationDrawerActivity {
         super.onCreate(savedInstanceState);
         setSelectedDrawerItemPosition(2);
 
-        GridView gridView = (GridView) findViewById(R.id.numbers_grid);
-        gridView.setAdapter(new ExpandAnimationGridAdapter(this, 12));
+        gridView = (GridView) findViewById(R.id.numbers_grid);
+        gridAdapter = new ExpandAnimationGridAdapter(this, 12);
+        gridView.setAdapter(gridAdapter);
     }
 
 
@@ -45,5 +50,11 @@ public class OverlappingMotionActivity extends BaseNavigationDrawerActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void again(View v) {
+        Button button = (Button) v;
+        gridAdapter.notifyDataSetChanged();
+        button.setText((button.getText().equals(getString(R.string.collapse)) ? R.string.expand : R.string.collapse));
     }
 }
