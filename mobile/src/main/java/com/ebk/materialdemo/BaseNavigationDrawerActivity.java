@@ -15,6 +15,7 @@ import android.widget.ListView;
 public abstract class BaseNavigationDrawerActivity extends ActionBarActivity {
 
     protected abstract int getLayoutId();
+
     protected abstract int getActivityTitleResId();
 
     private int selectedDrawerItemPosition = 0;
@@ -113,6 +114,10 @@ public abstract class BaseNavigationDrawerActivity extends ActionBarActivity {
                 case 2:
                     selectedDrawerItemPosition = 2;
                     startActivity(new Intent(this, OverlappingMotionActivity.class));
+                    break;
+                case 3:
+                    selectedDrawerItemPosition = 3;
+                    startActivity(new Intent(this, ConsistentChoreographyActivity.class));
                     break;
                 default:
                     break;

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gridLayoutAnimation xmlns:android="http://schemas.android.com/apk/res/android"
+    android:animation="@android:anim/fade_in"
+    android:columnDelay="10%"
+    android:direction="right_to_left"
+    android:duration="5000"
+    android:directionPriority="row"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"></gridLayoutAnimation>

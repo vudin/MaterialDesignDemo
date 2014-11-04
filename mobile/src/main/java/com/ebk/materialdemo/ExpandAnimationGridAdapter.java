@@ -17,11 +17,23 @@ public class ExpandAnimationGridAdapter extends BaseAdapter {
     private final Context context;
     private int itemsNumber;
     ViewHolder holder;
+    private AnimationContainer animationContainer;
+
+    public interface AnimationContainer {
+        void itemClicked(View v);
+    }
 
     public ExpandAnimationGridAdapter(Context context, int itemsNumber) {
         this.context = context;
         this.itemsNumber = itemsNumber;
         this.inflater = LayoutInflater.from(context);
+    }
+
+    public ExpandAnimationGridAdapter(Context context, int itemsNumber, AnimationContainer animationContainer) {
+        this.context = context;
+        this.itemsNumber = itemsNumber;
+        this.inflater = LayoutInflater.from(context);
+        this.animationContainer = animationContainer;
     }
 
     @Override
@@ -56,6 +68,7 @@ public class ExpandAnimationGridAdapter extends BaseAdapter {
         } else {
             collapseAnimation(position, convertView);
         }
+        convertView.setOnClickListener(new animationGridClickListener());
         return convertView;
     }
 
@@ -86,5 +99,21 @@ public class ExpandAnimationGridAdapter extends BaseAdapter {
 
     private static class ViewHolder {
         private TextView numberText;
+    }
+
+    private class animationGridClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            if (animationContainer != null) {
+                animationContainer.itemClicked(v);
+            }
+//            TranslateAnimation a = new TranslateAnimation(
+//                    Animation.ABSOLUTE, -200, Animation.ABSOLUTE, -200,
+//                    Animation.ABSOLUTE, -200, Animation.ABSOLUTE, -200);
+//            a.setDuration(1000);
+//            a.setFillAfter(true); //HERE
+//            a.setInterpolator(context, android.R.anim.linear_interpolator);
+//            v.startAnimation(a);
+        }
     }
 }
