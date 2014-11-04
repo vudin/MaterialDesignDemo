@@ -8,4 +8,10 @@
     <dimen name="planet_detail_max_header_elevation">@dimen/headerbar_elevation</dimen>
     <dimen name="number_item_width">50dp</dimen>
     <dimen name="number_item_height">50dp</dimen>
+
+
+    <dimen name="floating_button_height">56dp</dimen> <!-- including padding -->
+    <dimen name="floating_button_height_no_padding">40dp</dimen>
+    <dimen name="floating_button_elevation">8dp</dimen>
+    <dimen name="fab_press_translation_z">6dp</dimen>
 </resources>

@@ -140,8 +140,7 @@ public class PlanetsActivity extends BaseNavigationDrawerActivity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             // Define transition options
             ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(PlanetsActivity.this,
-                    new Pair<View, String>(view.findViewById(R.id.grid_item_planet_image), EXTRA_IMAGE),
-                    new Pair<View, String>(view.findViewById(R.id.grid_item_planet_name), EXTRA_NAME));
+                    new Pair<View, String>(view.findViewById(R.id.grid_item_planet_image), EXTRA_IMAGE));
 
             // Create intent
             Intent intent = new Intent(PlanetsActivity.this, PlanetDetailActivity.class);
