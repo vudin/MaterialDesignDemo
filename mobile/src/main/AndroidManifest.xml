@@ -32,6 +32,10 @@
             android:name=".OverlappingMotionActivity"
             android:label="@string/title_activity_overlapping_animation" >
         </activity>
+        <activity
+            android:name=".ConsistentChoreographyActivity"
+            android:label="@string/title_consistent_choreography" >
+        </activity>
     </application>
 
 </manifest>
