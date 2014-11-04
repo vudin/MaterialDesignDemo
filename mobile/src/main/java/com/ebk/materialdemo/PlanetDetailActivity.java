@@ -94,7 +94,7 @@ public class PlanetDetailActivity extends ActionBarActivity {
         mMaxHeaderElevation = getResources().getDimensionPixelSize(R.dimen.planet_detail_max_header_elevation);
         nameContainer = findViewById(R.id.header_container);
         name = (TextView) findViewById(R.id.planet_name);
-        ViewCompat.setTransitionName(name, PlanetsActivity.EXTRA_NAME);
+//        ViewCompat.setTransitionName(name, PlanetsActivity.EXTRA_NAME);
         name.setText(planetName);
     }
 
