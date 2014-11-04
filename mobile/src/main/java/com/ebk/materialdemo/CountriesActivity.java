@@ -33,7 +33,7 @@ public class CountriesActivity extends BaseNavigationDrawerActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
-        swipeRefreshLayout.setProgressBackgroundColor(R.color.gray_with_transparency);
+        swipeRefreshLayout.setProgressBackgroundColor(R.color.accent_light);
         swipeRefreshLayout.setSize(SwipeRefreshLayout.LARGE);
         swipeRefreshLayout.setColorSchemeResources(
                 android.R.color.holo_blue_bright,
@@ -44,6 +44,7 @@ public class CountriesActivity extends BaseNavigationDrawerActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
+
 
         populateList();
     }
@@ -111,7 +112,7 @@ public class CountriesActivity extends BaseNavigationDrawerActivity {
     }
 
     private static class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
-        private ArrayList<String> dataset;
+        private final ArrayList<String> dataset;
         public OnItemClickListener itemClickListener;
 
         public RecyclerAdapter(ArrayList<String> myDataset) {
@@ -127,8 +128,7 @@ public class CountriesActivity extends BaseNavigationDrawerActivity {
             // create a new view
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
             // set the view's size, margins, paddings and layout parameters
-            ViewHolder vh = new ViewHolder((CardView) v);
-            return vh;
+            return new ViewHolder((CardView) v);
         }
 
         @Override
@@ -142,8 +142,8 @@ public class CountriesActivity extends BaseNavigationDrawerActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-            public CardView cardView;
-            public TextView textView;
+            public final CardView cardView;
+            public final TextView textView;
 
             public ViewHolder(CardView v) {
                 super(v);

@@ -22,7 +22,7 @@
         <item name="drawableSize">48dp</item>
 
         <!--The max gap between the bars when they are parallel to each other-->
-        <item name="gapBetweenBars">5dp</item>
+        <item name="gapBetweenBars">4dp</item>
 
         <!--The size of the middle bar when top and bottom bars merge into middle bar to form an arrow-->
         <item name="middleBarArrowSize">20dp</item>
