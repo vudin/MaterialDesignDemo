@@ -38,7 +38,8 @@
             android:layout_margin="25dip"
             android:background="@drawable/floating_button_bg"
             android:src="@drawable/ic_plus"
-            android:contentDescription="@string/floating_button"/>
+            android:stateListAnimator="@anim/floating_button_state_list_anim"
+            android:contentDescription="@string/floating_button" />
 
     </FrameLayout>
 

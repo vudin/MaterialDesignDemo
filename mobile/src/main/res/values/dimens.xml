@@ -13,5 +13,5 @@
     <dimen name="floating_button_height">56dp</dimen> <!-- including padding -->
     <dimen name="floating_button_height_no_padding">40dp</dimen>
     <dimen name="floating_button_elevation">8dp</dimen>
-    <dimen name="fab_press_translation_z">6dp</dimen>
+    <dimen name="fab_press_translation_z">15dp</dimen>
 </resources>

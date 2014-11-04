@@ -7,7 +7,7 @@
     android:layout_height="100dp"
     android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="2dip"
-    app:cardElevation="3sp"
+    app:cardElevation="1sp"
     app:cardUseCompatPadding="true"
     app:cardBackgroundColor="#fcfcfc">
 

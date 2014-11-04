@@ -181,7 +181,7 @@ public class CountriesActivity extends BaseNavigationDrawerActivity {
         public void onItemClick(final View view, int position) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 if (view.getId() == R.id.card_view) {
-                    view.animate().translationZ(15f).setDuration(1000).setListener(new Animator.AnimatorListener() {
+                    view.animate().translationZ(15f).setDuration(500).setListener(new Animator.AnimatorListener() {
                         @Override
                         public void onAnimationStart(Animator animation) {
 
@@ -189,7 +189,7 @@ public class CountriesActivity extends BaseNavigationDrawerActivity {
 
                         @Override
                         public void onAnimationEnd(Animator animation) {
-                            view.setTranslationZ(3f);
+                            view.animate().translationZ(1f).setDuration(500).start();
 
                         }
 
@@ -204,8 +204,6 @@ public class CountriesActivity extends BaseNavigationDrawerActivity {
                         }
                     }).start();
                 }
-//                view.animate().translationZ(0f).setStartDelay(2000).setDuration(2000).start();
-                Toast.makeText(CountriesActivity.this, "Card " + position + " Clicked", Toast.LENGTH_SHORT).show();
             } else if (view.getId() == R.id.text_view) {
                 Toast.makeText(CountriesActivity.this, "Text " + position + " Clicked", Toast.LENGTH_SHORT).show();
             }
