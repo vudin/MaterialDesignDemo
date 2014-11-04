@@ -1,6 +1,9 @@
 package com.ebk.materialdemo;
 
+import android.animation.Animator;
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -173,9 +176,35 @@ public class CountriesActivity extends BaseNavigationDrawerActivity {
     }
 
     private class RecyclerViewOnItemClickListener implements RecyclerAdapter.OnItemClickListener {
+        @TargetApi(Build.VERSION_CODES.LOLLIPOP)
         @Override
-        public void onItemClick(View view, int position) {
-            if (view.getId() == R.id.card_view) {
+        public void onItemClick(final View view, int position) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                if (view.getId() == R.id.card_view) {
+                    view.animate().translationZ(15f).setDuration(1000).setListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            view.setTranslationZ(3f);
+
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animation) {
+
+                        }
+                    }).start();
+                }
+//                view.animate().translationZ(0f).setStartDelay(2000).setDuration(2000).start();
                 Toast.makeText(CountriesActivity.this, "Card " + position + " Clicked", Toast.LENGTH_SHORT).show();
             } else if (view.getId() == R.id.text_view) {
                 Toast.makeText(CountriesActivity.this, "Text " + position + " Clicked", Toast.LENGTH_SHORT).show();
