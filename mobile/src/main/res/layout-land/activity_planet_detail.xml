@@ -47,36 +47,39 @@
 
     </FrameLayout>
 
-    <com.ebk.materialdemo.widget.ObservableScrollView
-        android:id="@+id/scroll_view"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:overScrollMode="never"
-        android:fillViewport="true"
-        android:background="#fff">
 
-        <LinearLayout
-            android:id="@+id/scroll_view_child"
+    <LinearLayout
+        android:id="@+id/scroll_view_child"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/header_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:background="@android:color/white">
 
-            <FrameLayout
-                android:id="@+id/header_container"
+            <TextView
+                android:id="@+id/planet_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/white">
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:elevation="@dimen/planet_detail_max_header_elevation" />
+        </FrameLayout>
 
-                <TextView
-                    android:id="@+id/planet_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:padding="@dimen/activity_horizontal_margin" />
-            </FrameLayout>
+        <com.ebk.materialdemo.widget.ObservableScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:fillViewport="true"
+            android:background="#fff">
+
 
             <FrameLayout
                 android:id="@+id/detail_container"
@@ -92,6 +95,6 @@
                     android:padding="@dimen/activity_horizontal_margin" />
             </FrameLayout>
 
-        </LinearLayout>
-    </com.ebk.materialdemo.widget.ObservableScrollView>
+        </com.ebk.materialdemo.widget.ObservableScrollView>
+    </LinearLayout>
 </LinearLayout>
