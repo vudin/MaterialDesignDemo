@@ -39,15 +39,14 @@ public class CountriesActivity extends BaseNavigationDrawerActivity {
         swipeRefreshLayout.setProgressBackgroundColor(R.color.accent_light);
         swipeRefreshLayout.setSize(SwipeRefreshLayout.LARGE);
         swipeRefreshLayout.setColorSchemeResources(
+                android.R.color.holo_purple,
                 android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
-                android.R.color.holo_orange_light,
-                android.R.color.holo_purple);
+                android.R.color.holo_orange_light);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshListener());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
-
 
         populateList();
     }
