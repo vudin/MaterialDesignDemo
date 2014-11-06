@@ -1,6 +1,7 @@
 package com.ebk.materialdemo;
 
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.ActionBarActivity;
@@ -172,11 +173,6 @@ public class PlanetDetailActivity extends ActionBarActivity {
 
             if (imageHeightPixels - scrollY <= toolBarHeightPixels) { // We reached the toolbar (actionbar)
                 newTop = scrollY + toolBarHeightPixels;
-                toolbar.setBackgroundColor(lightVibrantColorFromImage);
-                toolBarContainer.setBackgroundColor(getResources().getColor(android.R.color.white));
-            } else {
-                toolbar.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-                toolBarContainer.setBackgroundColor(getResources().getColor(android.R.color.transparent));
             }
 
             nameContainer.setTranslationY(newTop);
@@ -187,6 +183,9 @@ public class PlanetDetailActivity extends ActionBarActivity {
             }
 
             ViewCompat.setElevation(nameContainer, gapFillProgress * mMaxHeaderElevation);
+
+            toolbar.getBackground().setAlpha((int) (gapFillProgress * 255));
+            toolBarContainer.setBackgroundColor(Color.argb((int) (gapFillProgress * 255), 255, 255, 255));
 
             // Move background photo (with parallax effect)
             imageContainer.setTranslationY(scrollY * 0.5f);
@@ -205,6 +204,9 @@ public class PlanetDetailActivity extends ActionBarActivity {
         public void onGenerated(Palette palette) {
             lightVibrantColorFromImage = palette.getLightVibrantColor(R.color.light_blue);
             name.setBackgroundColor(lightVibrantColorFromImage);
+            toolbar.setBackgroundColor(lightVibrantColorFromImage);
+            toolbar.getBackground().setAlpha(0);
+            toolBarContainer.setBackgroundColor(Color.argb(0, 255, 255, 255));
         }
     }
 }
