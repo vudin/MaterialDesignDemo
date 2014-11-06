@@ -178,8 +178,9 @@ public class CountriesActivity extends BaseNavigationDrawerActivity {
         @TargetApi(Build.VERSION_CODES.LOLLIPOP)
         @Override
         public void onItemClick(final View view, int position) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                if (view.getId() == R.id.card_view) {
+
+            if (view.getId() == R.id.card_view) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     view.animate().translationZ(15f).setDuration(500).setListener(new Animator.AnimatorListener() {
                         @Override
                         public void onAnimationStart(Animator animation) {
