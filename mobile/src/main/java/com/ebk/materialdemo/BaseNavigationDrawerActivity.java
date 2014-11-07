@@ -115,10 +115,6 @@ public abstract class BaseNavigationDrawerActivity extends ActionBarActivity {
                     selectedDrawerItemPosition = 2;
                     startActivity(new Intent(this, OverlappingMotionActivity.class));
                     break;
-                case 3:
-                    selectedDrawerItemPosition = 3;
-                    startActivity(new Intent(this, ConsistentChoreographyActivity.class));
-                    break;
                 default:
                     break;
             }

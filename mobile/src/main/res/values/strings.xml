@@ -12,13 +12,11 @@
     <string name="title_activity_planet_detail">Planet Info</string>
     <string name="planet_image">Planet image</string>
     <string name="title_overlapping_motion">Overlapping Motion</string>
-    <string name="title_consistent_choreography">Consistent Choreography</string>
 
     <string-array name="navigation_items">
         <item>Countries</item>
         <item>Planets</item>
-        <item>Overlapping Motion</item>
-        <item>Consistent Choreography</item>
+        <item>Overlapping Motion Sample</item>
     </string-array>
     <string-array name="planet_names">
         <item>Mercury</item>

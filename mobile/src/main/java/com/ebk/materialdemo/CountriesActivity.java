@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -44,7 +44,7 @@ public class CountriesActivity extends BaseNavigationDrawerActivity {
                 android.R.color.holo_orange_light,
                 android.R.color.holo_purple);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshListener());
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.HORIZONTAL);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
 
@@ -107,7 +107,6 @@ public class CountriesActivity extends BaseNavigationDrawerActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    populateList();
                     swipeRefreshLayout.setRefreshing(false);
                 }
             }, 5000); //adding five sec delay
@@ -179,31 +178,30 @@ public class CountriesActivity extends BaseNavigationDrawerActivity {
         @TargetApi(Build.VERSION_CODES.LOLLIPOP)
         @Override
         public void onItemClick(final View view, int position) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                if (view.getId() == R.id.card_view) {
-                    view.animate().translationZ(15f).setDuration(500).setListener(new Animator.AnimatorListener() {
-                        @Override
-                        public void onAnimationStart(Animator animation) {
 
-                        }
+            if (view.getId() == R.id.card_view && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                view.animate().translationZ(20f).setDuration(500).setListener(new Animator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animation) {
 
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            view.animate().translationZ(1f).setDuration(500).start();
+                    }
 
-                        }
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        view.animate().translationZ(1f).setDuration(500).start();
 
-                        @Override
-                        public void onAnimationCancel(Animator animation) {
+                    }
 
-                        }
+                    @Override
+                    public void onAnimationCancel(Animator animation) {
 
-                        @Override
-                        public void onAnimationRepeat(Animator animation) {
+                    }
 
-                        }
-                    }).start();
-                }
+                    @Override
+                    public void onAnimationRepeat(Animator animation) {
+
+                    }
+                }).start();
             } else if (view.getId() == R.id.text_view) {
                 Toast.makeText(CountriesActivity.this, "Text " + position + " Clicked", Toast.LENGTH_SHORT).show();
             }

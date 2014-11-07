@@ -12,6 +12,7 @@
     app:cardBackgroundColor="#fcfcfc">
 
     <TextView
+        android:layout_margin="10dip"
         android:id="@+id/text_view"
         android:textStyle="bold"
         android:layout_gravity="center"
