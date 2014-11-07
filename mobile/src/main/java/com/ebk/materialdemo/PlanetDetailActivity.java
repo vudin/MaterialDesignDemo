@@ -1,6 +1,8 @@
 package com.ebk.materialdemo;
 
+import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.ActionBarActivity;
@@ -164,39 +166,40 @@ public class PlanetDetailActivity extends ActionBarActivity {
     private class ScrollCallback implements ObservableScrollView.Callbacks {
         @Override
         public void onScrollChanged(int deltaX, int deltaY) {
-            // Reposition the name bar -- it's normally anchored to the top of the detail part,
-            // but locks to the top of the screen on scroll
-            int scrollY = scrollView.getScrollY();
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+                // Reposition the name bar -- it's normally anchored to the top of the detail part,
+                // but locks to the top of the screen on scroll
+                int scrollY = scrollView.getScrollY();
 
-            float newTop = Math.max(imageHeightPixels, scrollY);
+                float newTop = Math.max(imageHeightPixels, scrollY);
 
-            if (imageHeightPixels - scrollY <= toolBarHeightPixels) { // We reached the toolbar (actionbar)
-                newTop = scrollY + toolBarHeightPixels;
-                toolbar.setBackgroundColor(lightVibrantColorFromImage);
-                toolBarContainer.setBackgroundColor(getResources().getColor(android.R.color.white));
-            } else {
-                toolbar.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-                toolBarContainer.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                if (imageHeightPixels - scrollY <= toolBarHeightPixels) { // We reached the toolbar (actionbar)
+                    newTop = scrollY + toolBarHeightPixels;
+                }
+
+                nameContainer.setTranslationY(newTop);
+
+                float gapFillProgress = 1;
+                if (imageHeightPixels != 0) {
+                    gapFillProgress = Math.min(Math.max(getProgress(scrollY, 0, imageHeightPixels), 0), 1);
+                }
+
+                ViewCompat.setElevation(nameContainer, gapFillProgress * mMaxHeaderElevation);
+
+                toolbar.getBackground().setAlpha((int) (gapFillProgress * 255));
+                toolBarContainer.setBackgroundColor(Color.argb((int) (gapFillProgress * 255), 255, 255, 255));
+
+                // Move background photo (with parallax effect)
+                imageContainer.setTranslationY(scrollY * 0.5f);
             }
-
-            nameContainer.setTranslationY(newTop);
-
-            float gapFillProgress = 1;
-            if (imageHeightPixels != 0) {
-                gapFillProgress = Math.min(Math.max(getProgress(scrollY, 0, imageHeightPixels), 0), 1);
-            }
-
-            ViewCompat.setElevation(nameContainer, gapFillProgress * mMaxHeaderElevation);
-
-            // Move background photo (with parallax effect)
-            imageContainer.setTranslationY(scrollY * 0.5f);
         }
     }
 
     private class GlobalLayoutListener implements ViewTreeObserver.OnGlobalLayoutListener {
         @Override
         public void onGlobalLayout() {
-            computePhotoAndScrollingMetrics();
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+                computePhotoAndScrollingMetrics();
         }
     }
 
@@ -205,6 +208,8 @@ public class PlanetDetailActivity extends ActionBarActivity {
         public void onGenerated(Palette palette) {
             lightVibrantColorFromImage = palette.getLightVibrantColor(R.color.light_blue);
             name.setBackgroundColor(lightVibrantColorFromImage);
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+                toolbar.setBackgroundColor(lightVibrantColorFromImage);
         }
     }
 }
